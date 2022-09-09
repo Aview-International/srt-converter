@@ -1,11 +1,9 @@
-read -p "Input URL: " vUrl
+read -p "Input URL and language initials: " vUrl lang
 vId=${vUrl:32:11}
 if [ -z $vId ]
 then
     echo "Cannot have empty input!"
 else
-    read -p "Input language (default: en, options: ru, ja, de, etc.): " lang
-    echo
     if [ -z $lang ] || [ "$lang" = "en" ]
     then
         params="$(printf "\n\x0b$vId" | base64)"
