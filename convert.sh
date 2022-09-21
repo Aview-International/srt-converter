@@ -17,6 +17,7 @@ while read line lang || [ -n "$line" ]; do
         fi
         rawData="{\"context\":{\"client\":{\"clientName\":\"WEB\",\"clientVersion\":\"2.2021111\"}},\"params\":\"$params\"}"
         curl -s 'https://www.youtube.com/youtubei/v1/get_transcript?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8' -H 'Content-Type: application/json' --data-raw $rawData -o ./jsonSubs/$vId.json
-        node ./index.js $vId
+        title="$(curl -s "https://noembed.com/embed?url=https://www.youtube.com/watch?v=$vId" | jq ".title")"
+        node ./index.js $vId "$title"
     fi
 done < $file
