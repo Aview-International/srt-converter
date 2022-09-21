@@ -1,5 +1,6 @@
 const fs = require("fs");
-const subs = require("./jsonSubs/f.json");
+const vId = process.argv[2];
+const subs = require(`./jsonSubs/${vId}.json`);
 
 const main = async () => {
   let srtCount = 0;
@@ -64,7 +65,7 @@ const main = async () => {
   });
 
   for (var i = 0; i < subtitles.length; i++) {
-    fs.appendFileSync("./srts/f.srt", inputToSRT(subtitles[i]), function (err) {
+    fs.appendFileSync(`./srts/${vId}.srt`, inputToSRT(subtitles[i]), function (err) {
       if (err) throw err;
     });
   }
