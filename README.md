@@ -10,14 +10,17 @@ This script retrieves the caption of a YouTube video per language in SRT format.
 ## How to Use
 
 1. Install dependencies.
-2. Run sh convert.sh.
-3. The generated srt file is named f.srt and would be found in the srts folder.
-(Note: The generated srt file overwrites the existing f.srt in the folder.)
+2. Put video links in links.txt.
+3. Run sh convert.sh.
+4. The generated srt files  would be found in the srts folder.
+(Note: The generated srt files overwrites the existing srts in the folder if it is duplicate.)
 
 ### Sample 
+In links.txt:
 ```
-sh convert.sh
-Input URL and language initials: https://www.youtube.com/watch?v=VIDEOID ja
+https://www.youtube.com/watch?v=HjEqOWjTkHE&ab_channel=MarquesBrownlee
+https://www.youtube.com/watch?v=XsGOQP-B0gU&ab_channel=LoganPaul ar
+https://www.youtube.com/watch?v=dg2Ag3e8W-Q&ab_channel=MrBeast de
 ```
 If language initials are not provided, the script would default to the video's default set language.
 
