@@ -34,3 +34,5 @@ You can refer [here](https://www.embedplus.com/youtube-iso-639-1-language-codes.
 1. This only works on utf8 captions. Non-utf8 characters are stripped out. 
 2. The formatting is not preserved if the creator-provided captions have some.
 3. Videos with no captions (auto-generated is ) will fail to work with this script.
+4. Auto-generated transcripts do not work if the video has other provided captions.
+5. Filipino/Tagalog captions do not work with the API fetching due to migration of YouTube API. (v1 vs v3)
