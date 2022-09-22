@@ -2,8 +2,8 @@ const fs = require("fs");
 
 const vId = process.argv[2];
 const title = process.argv[3].slice(1, -1);
-const subs = require(`./jsonSubs/${vId}.json`);
-
+const lang = process.argv[4];
+const subs = lang ? require(`./jsonSubs/${vId}${lang}.json`) : require(`./jsonSubs/${vId}.json`);
 
 
 const main = async () => {
@@ -63,13 +63,13 @@ const main = async () => {
           .simpleText,
       })
     );
-
-  fs.writeFile(`./srts/${title}.srt`, "", function (err) {
+  const fName = lang ? `./srts/${title}_${lang}.srt` : `./srts/${title}.srt`;
+  fs.writeFile(fName, "", function (err) {
     if (err) throw err;
   });
 
   for (var i = 0; i < subtitles.length; i++) {
-    fs.appendFileSync(`./srts/${title}.srt`, inputToSRT(subtitles[i]), function (err) {
+    fs.appendFileSync(fName, inputToSRT(subtitles[i]), function (err) {
       if (err) throw err;
     });
   }
@@ -77,4 +77,4 @@ const main = async () => {
 
 main()
   .then(() => console.log("Your SRT file has been generated."))
-  .catch(() => console.log("Error!"));
+  .catch((err) => console.log(err));
